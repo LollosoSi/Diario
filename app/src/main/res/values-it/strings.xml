@@ -3,4 +3,5 @@
     <string name="app_name">Diario</string>
     <string name="welcome">Benvenuto</string>
     <string name="loading">Attendi il caricamento</string>
+    <string name="welcome2">Dimenticati di dimenticare qualcosa</string>
 </resources>

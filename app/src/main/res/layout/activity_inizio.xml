@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,4 +7,25 @@
     android:layout_height="match_parent"
     tools:context="utenti.diario.inizio">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/welcometextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="74dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp" />
+
+    <TextView
+        android:id="@+id/didascaliatextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcometextview"
+        android:layout_centerHorizontal="true"
+        android:text="TextView" />
+</RelativeLayout>

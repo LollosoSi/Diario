@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "433704833265",
+    "firebase_url": "https://diario-5945c.firebaseio.com",
+    "project_id": "diario-5945c",
+    "storage_bucket": "diario-5945c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433704833265:android:da5ab42eaa8268f2",
+        "android_client_info": {
+          "package_name": "utenti.diario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433704833265-paedalr8bo3j8fs8artuo1qd3225rr9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "utenti.diario",
+            "certificate_hash": "31ea2ccaa3f4c4ea2b4bf95d8a3e8b39d54dc527"
+          }
+        },
+        {
+          "client_id": "433704833265-9t1sih1561aaal516ie3a03stkcidvar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARKLElmRTQo0C1Jty-YHMwHuTTCt1WZIs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433704833265-9t1sih1561aaal516ie3a03stkcidvar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

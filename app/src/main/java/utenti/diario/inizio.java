@@ -3,14 +3,19 @@ package utenti.diario;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class inizio extends Activity {
+import utenti.diario.utilities.internet.InternetCheck;
+import utenti.diario.utilities.internet.InternetManager;
+
+public class inizio extends Activity implements InternetCheck {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,8 @@ public class inizio extends Activity {
                 SetRandomHint();
             }
         });
+
+        StartConnectionCheck();
 
     }
 
@@ -43,5 +50,19 @@ public class inizio extends Activity {
         }
     }
 
+    void StartConnectionCheck(){
+
+        new InternetManager().execute(this,null,null);
+        Looper.prepare();
+    }
+
+    @Override
+    public void OnConnectionChecked(boolean isOnline) {
+        if(isOnline){
+            Toast.makeText(this,"Sei connesso!",Toast.LENGTH_SHORT).show();
+        }else{
+            setContentView(R.layout.notconnectedlayout);
+        }
+    }
 
 }

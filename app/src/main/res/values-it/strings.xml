@@ -7,4 +7,6 @@
     <string name="hint0">Benvenuto nel tuo nuovo Diario</string>
     <string name="hint1">Premi questo testo per cambiare frase</string>
     <string name="hint2">Qui ci sono i suggerimenti</string>
+    <string name="notconnected">Non sei connesso!</string>
+    <string name="offlinemode">Modalità offline</string>
 </resources>

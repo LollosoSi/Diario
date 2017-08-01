@@ -7,4 +7,6 @@
     <string name="hint0">Bienvenue dans votre nouveau journal</string>
     <string name="hint1">Appuyez sur cette phrase pour changer</string>
     <string name="hint2">Voici quelques suggestions</string>
+    <string name="offlinemode">mode hors ligne</string>
+    <string name="notconnected">Vous n\'êtes pas connecté!</string>
 </resources>

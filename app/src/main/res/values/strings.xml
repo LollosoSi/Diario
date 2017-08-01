@@ -6,4 +6,6 @@
     <string name="hint0">Welcome to your new Diary</string>
     <string name="hint1">You can press this text to change hints!</string>
     <string name="hint2">This is an hint</string>
+    <string name="notconnected">You\'re not connected!</string>
+    <string name="offlinemode">Offline Mode</string>
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Journal</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="loading">Chargement, veuillez patienter</string>
+</resources>

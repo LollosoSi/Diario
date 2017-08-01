@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Diario</string>
+    <string name="welcome">Benvenuto</string>
+    <string name="loading">Attendi il caricamento</string>
+</resources>

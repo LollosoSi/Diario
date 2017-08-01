@@ -3,4 +3,7 @@
     <string name="welcome">Welcome</string>
     <string name="loading">Loading, please wait</string>
     <string name="welcome2">Forget to forget something</string>
+    <string name="hint0">Welcome to your new Diary</string>
+    <string name="hint1">You can press this text to change hints!</string>
+    <string name="hint2">This is an hint</string>
 </resources>

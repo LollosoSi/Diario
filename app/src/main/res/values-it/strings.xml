@@ -4,4 +4,7 @@
     <string name="welcome">Benvenuto</string>
     <string name="loading">Attendi il caricamento</string>
     <string name="welcome2">Dimenticati di dimenticare qualcosa</string>
+    <string name="hint0">Benvenuto nel tuo nuovo Diario</string>
+    <string name="hint1">Premi questo testo per cambiare frase</string>
+    <string name="hint2">Qui ci sono i suggerimenti</string>
 </resources>

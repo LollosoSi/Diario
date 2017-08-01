@@ -4,4 +4,7 @@
     <string name="welcome">Bienvenue</string>
     <string name="loading">Chargement, veuillez patienter</string>
     <string name="welcome2">Oubliez oublier quelque chose</string>
+    <string name="hint0">Bienvenue dans votre nouveau journal</string>
+    <string name="hint1">Appuyez sur cette phrase pour changer</string>
+    <string name="hint2">Voici quelques suggestions</string>
 </resources>

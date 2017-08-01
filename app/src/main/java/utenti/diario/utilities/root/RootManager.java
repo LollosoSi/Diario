@@ -5,4 +5,9 @@ package utenti.diario.utilities.root;
  */
 
 public class RootManager {
+
+    boolean isRooted(){
+        return false;
+    }
+
 }

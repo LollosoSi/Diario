@@ -28,9 +28,10 @@
         android:id="@+id/hinttextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="suggerimenti con colori belli"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp" />
+        android:layout_marginBottom="25dp"
+        android:text="suggerimenti con colori belli"
+        android:textSize="18sp" />
 
 </RelativeLayout>

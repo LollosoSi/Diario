@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 public class RootManager {
 
-    boolean isRooted(){
+    public boolean isRooted(){
         return checkRootMethod1() || checkRootMethod2() || checkRootMethod3();
     }
 

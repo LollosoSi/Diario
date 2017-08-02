@@ -37,7 +37,7 @@ public class inizio extends Activity implements InternetCheck {
     void SetRandomHint(){
         Random rnd = new Random();
         ((TextView) findViewById(R.id.hinttextview)).setTextColor(Color.argb(255, rnd.nextInt(256-150)+150, rnd.nextInt(256-150)+150, rnd.nextInt(256-150)+150));
-        switch (rnd.nextInt(3)) {
+        switch (rnd.nextInt(5)) {
             case 0:
                 ((TextView) findViewById(R.id.hinttextview)).setText(getString(R.string.hint0));
                 break;
@@ -46,6 +46,12 @@ public class inizio extends Activity implements InternetCheck {
                 break;
             case 2:
                 ((TextView) findViewById(R.id.hinttextview)).setText(getString(R.string.hint2));
+                break;
+            case 3:
+                ((TextView) findViewById(R.id.hinttextview)).setText(getString(R.string.hint3));
+                break;
+            case 4:
+                ((TextView) findViewById(R.id.hinttextview)).setText(getString(R.string.hint4));
                 break;
         }
     }

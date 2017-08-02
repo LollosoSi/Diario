@@ -9,4 +9,6 @@
     <string name="hint2">Voici quelques suggestions</string>
     <string name="offlinemode">mode hors ligne</string>
     <string name="notconnected">Vous n\'êtes pas connecté!</string>
+    <string name="hint4">Réception de données à partir de la base de données ..</string>
+    <string name="hint3">Vous aurez plus besoin d\'un nouveau journal!</string>
 </resources>

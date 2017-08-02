@@ -3,13 +3,9 @@ package utenti.diario;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.Random;
 
 import utenti.diario.utilities.internet.InternetCheck;
@@ -58,17 +54,35 @@ public class inizio extends Activity implements InternetCheck {
 
     void StartConnectionCheck(){
 
-        new InternetManager().execute(this,null,null);
-        Looper.prepare();
+        Handler h;
+        h = new Handler();
+        h.post(new Runnable() {
+            @Override
+            public void run() {
+                new InternetManager().execute(inizio.this,null,null);
+            }
+        });
+
+
     }
 
     @Override
     public void OnConnectionChecked(boolean isOnline) {
+
+        /** Method called by interface */
+
         if(isOnline){
-            Toast.makeText(this,"Sei connesso!",Toast.LENGTH_SHORT).show();
+            // Connected!
         }else{
-            setContentView(R.layout.notconnectedlayout);
+            // Not connected, Updating UI
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    setContentView(R.layout.notconnectedlayout);
+                }
+            });
         }
     }
+
 
 }

@@ -54,9 +54,7 @@ public class inizio extends Activity implements InternetCheck {
 
     void StartConnectionCheck(){
 
-        Handler h;
-        h = new Handler();
-        h.post(new Runnable() {
+        new Handler().post(new Runnable() {
             @Override
             public void run() {
                 new InternetManager().execute(inizio.this,null,null);

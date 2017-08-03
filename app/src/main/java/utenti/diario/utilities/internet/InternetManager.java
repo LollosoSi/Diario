@@ -11,12 +11,13 @@ import java.net.SocketAddress;
  * Created by SosiForWork on 01/08/2017.
  */
 
-public class InternetManager extends AsyncTask<InternetCheck,Void,Void> {
+public class InternetManager extends AsyncTask<InternetDataElement,Void,Void> {
 
         @Override
-        protected Void doInBackground(InternetCheck... params) {
+        protected Void doInBackground(InternetDataElement... params) {
 
-            InternetCheck cl=params[0];
+            InternetDataElement ie = params[0];
+            InternetCheck ic = ie.IC;
 
             try {
                 int timeoutMs = 1500;
@@ -25,10 +26,10 @@ public class InternetManager extends AsyncTask<InternetCheck,Void,Void> {
 
                 sock.connect(sockaddr, timeoutMs);
                 sock.close();
-                cl.OnConnectionChecked(true);
+                ic.OnConnectionChecked(true, ie.RequestID);
 
             } catch(IOException e) {
-                cl.OnConnectionChecked(false);
+                ic.OnConnectionChecked(false, ie.RequestID);
 
             }
 

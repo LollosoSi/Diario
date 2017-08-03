@@ -11,12 +11,16 @@ import android.widget.Toast;
 import java.util.Random;
 
 import utenti.diario.utilities.internet.InternetCheck;
+import utenti.diario.utilities.internet.InternetDataElement;
 import utenti.diario.utilities.internet.InternetManager;
 
 public class inizio extends Activity implements InternetCheck {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /** Called when app is opened */
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inizio);
 
@@ -59,7 +63,7 @@ public class inizio extends Activity implements InternetCheck {
         new Handler().post(new Runnable() {
             @Override
             public void run() {
-                new InternetManager().execute(inizio.this,null,null);
+                new InternetManager().execute(new InternetDataElement(inizio.this,0),null,null);
             }
         });
 
@@ -67,7 +71,7 @@ public class inizio extends Activity implements InternetCheck {
     }
 
     @Override
-    public void OnConnectionChecked(boolean isOnline) {
+    public void OnConnectionChecked(boolean isOnline, int RequestID) {
 
         /** Method called by interface */
 

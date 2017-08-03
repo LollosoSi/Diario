@@ -5,5 +5,5 @@ package utenti.diario.utilities.internet;
  */
 
 public interface InternetCheck {
-    void OnConnectionChecked(boolean isOnline);
+    void OnConnectionChecked(boolean isOnline, int RequestID);
 }

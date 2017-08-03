@@ -31,7 +31,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
-        android:text="suggerimenti con colori belli"
+        android:text="hints with beautiful colors"
         android:textSize="18sp" />
 
 </RelativeLayout>

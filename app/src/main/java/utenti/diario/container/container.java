@@ -1,5 +1,7 @@
 package utenti.diario.container;
 
+import utenti.diario.utilities.database.DatabaseManager;
+
 /**
  * Created by SosiForWork on 01/08/2017.
  */
@@ -12,6 +14,6 @@ public class Container {
         return ourInstance;
     }
 
-
+    public DatabaseManager databaseManager=null;
 
 }

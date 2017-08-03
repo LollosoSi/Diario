@@ -13,6 +13,7 @@ import java.util.Random;
 import utenti.diario.utilities.internet.InternetCheck;
 import utenti.diario.utilities.internet.InternetDataElement;
 import utenti.diario.utilities.internet.InternetManager;
+import utenti.diario.utilities.usermanagement.UserManager;
 
 public class inizio extends Activity implements InternetCheck {
 
@@ -33,6 +34,7 @@ public class inizio extends Activity implements InternetCheck {
         });
 
         StartConnectionCheck();
+        new UserManager().Registration();
 
     }
 

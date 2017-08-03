@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Random;
 
 import utenti.diario.utilities.internet.InternetCheck;
@@ -77,6 +79,12 @@ public class inizio extends Activity implements InternetCheck {
                 @Override
                 public void run() {
                     setContentView(R.layout.notconnectedlayout);
+                    findViewById(R.id.offlinemodebt).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(inizio.this,"WIP",Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             });
         }

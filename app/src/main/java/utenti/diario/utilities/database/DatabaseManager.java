@@ -20,7 +20,7 @@ public class DatabaseManager {
     }
 
     public DatabaseReference getClassPath(String institute, String Class){
-        DatabaseReference i = DR.child("Istituti").child(institute).child(cla);
-        return i;
+       // DatabaseReference i = DR.child("Istituti").child(institute).child(cla);
+        return null;
     }
 }

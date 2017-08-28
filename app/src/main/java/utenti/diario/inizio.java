@@ -1,6 +1,7 @@
 package utenti.diario;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import utenti.diario.activities.login.Login;
 import utenti.diario.utilities.internet.InternetCheck;
 import utenti.diario.utilities.internet.InternetDataElement;
 import utenti.diario.utilities.internet.InternetManager;
@@ -79,6 +81,8 @@ public class inizio extends Activity implements InternetCheck {
 
         if(isOnline){
             // Connected!
+            startActivity(new Intent(this, Login.class));
+            finish();
         }else{
             // Not connected, Updating UI
             runOnUiThread(new Runnable() {

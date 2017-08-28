@@ -1,12 +1,9 @@
 package utenti.diario.utilities.usermanagement;
 
 import com.google.firebase.database.DatabaseReference;
-
 import utenti.diario.utilities.database.DatabaseManager;
 
-/**
- * Created by SosiForWork on 03/08/2017.
- */
+
 
 public class UserManager {
 

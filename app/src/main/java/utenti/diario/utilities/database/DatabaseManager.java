@@ -19,8 +19,8 @@ public class DatabaseManager {
         DR = FirebaseDatabase.getInstance().getReference();
     }
 
-    public DatabaseReference getIstitutepath(){
-        DatabaseReference i = DR.child("lezzo").child("lezzolezzo");
+    public DatabaseReference getClassPath(String institute, String Class){
+        DatabaseReference i = DR.child("Istituti").child(institute).child(cla);
         return i;
     }
 }

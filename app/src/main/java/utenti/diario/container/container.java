@@ -1,5 +1,7 @@
 package utenti.diario.container;
 
+import java.util.ArrayList;
+
 import utenti.diario.utilities.database.DatabaseManager;
 
 /**
@@ -15,5 +17,6 @@ public class Container {
     }
 
     public DatabaseManager databaseManager=null;
+    public ArrayList<String> temparraylist=null;
 
 }

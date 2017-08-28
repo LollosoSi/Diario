@@ -5,4 +5,8 @@
 
     </style>
 
+    <style name="MaterialLight" parent="android:Theme.Material.Light.DarkActionBar">
+
+    </style>
+
 </resources>

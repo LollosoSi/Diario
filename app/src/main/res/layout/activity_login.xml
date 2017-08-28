@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
-        android:textColor="@android:color/background_light"
         android:textSize="36sp"
         android:visibility="visible"
         tools:layout_editor_absoluteX="117dp"
@@ -30,6 +29,26 @@
         android:layout_centerHorizontal="true"
         android:text="@string/welcome2" />
 
+    <EditText
+        android:id="@+id/nameinput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/didascaliatextview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="158dp"
+        android:ems="10"
+        android:hint="Input name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/passwordinput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/nameinput"
+        android:layout_below="@+id/nameinput"
+        android:ems="10"
+        android:hint="input password"
+        android:inputType="textPassword" />
 
 
 </RelativeLayout>

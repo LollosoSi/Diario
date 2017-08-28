@@ -15,12 +15,10 @@ public class DatabaseManager {
 
     public DatabaseManager(){
         // Initializing
-
         DR = FirebaseDatabase.getInstance().getReference();
     }
 
-    public DatabaseReference getClassPath(String institute, String Class){
-       // DatabaseReference i = DR.child("Istituti").child(institute).child(cla);
-        return null;
+    public DatabaseReference getDatabase(){
+        return DR;
     }
 }

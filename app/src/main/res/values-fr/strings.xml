@@ -11,4 +11,5 @@
     <string name="notconnected">Vous n\'êtes pas connecté!</string>
     <string name="hint4">Réception de données à partir de la base de données ..</string>
     <string name="hint3">Vous aurez plus besoin d\'un nouveau journal!</string>
+    <string name="password">Password</string>
 </resources>

@@ -37,7 +37,6 @@ public class inizio extends Activity implements InternetCheck {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inizio);
 
-        setTheme(R.style.MaterialLight);
 
         new DatabaseManager();  // Let database manager store in Container by initializing
 

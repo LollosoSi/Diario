@@ -10,4 +10,12 @@
     <string name="offlinemode">Offline Mode</string>
     <string name="hint3">You\'ll never need a Diary again!</string>
     <string name="hint4">Wait for database to load</string>
+    <string name="please_wait">Please wait</string>
+    <string name="logging_in">Logging in...</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="choose_your_institute">Choose your Institute</string>
+    <string name="choose_your_class">Choose your class</string>
 </resources>

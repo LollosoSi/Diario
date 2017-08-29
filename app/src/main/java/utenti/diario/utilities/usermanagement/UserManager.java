@@ -111,7 +111,7 @@ return true;
         }
     }
 
-    boolean userExist(String institute, String Class, String name){
+   public boolean userExist(String institute, String Class, String name){
         final boolean[] found = {false};
         Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

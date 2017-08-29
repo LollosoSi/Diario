@@ -11,4 +11,12 @@
     <string name="offlinemode">Modalità offline</string>
     <string name="hint4">Ricezione dati dal database..</string>
     <string name="hint3">Non avrai più bisogno di un nuovo diario!</string>
+    <string name="password">Password</string>
+    <string name="username">Nome Utente</string>
+    <string name="login">Entra</string>
+    <string name="register">Registrati</string>
+    <string name="logging_in">Sto entrando..</string>
+    <string name="please_wait">Attendi</string>
+    <string name="choose_your_institute">Scegli il tuo istituto</string>
+    <string name="choose_your_class">Scegli la tua classe</string>
 </resources>

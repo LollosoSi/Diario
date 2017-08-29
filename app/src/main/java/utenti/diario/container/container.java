@@ -19,4 +19,10 @@ public class Container {
     public DatabaseManager databaseManager=null;
     public ArrayList<String> temparraylist=null;
 
+    public ArrayList<String> tempinstituteslist=null;
+    public ArrayList<String> tempclasseslist=null;
+
+    public String GlobalInstitute = "";
+    public String GlobalClass = "";
+
 }

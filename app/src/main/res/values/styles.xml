@@ -1,12 +1,22 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material">
+
+    <style name="MaterialBlack" parent="android:Theme.Material">
 
     </style>
 
     <style name="MaterialLight" parent="android:Theme.Material.Light.DarkActionBar">
 
+    </style>
+
+    <style name="MaterialBlackNoActionBar" parent="android:Theme.Material.NoActionBar">
+        <item name="android:fitsSystemWindows">true</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="MaterialLightNoActionBar" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:fitsSystemWindows">true</item>
     </style>
 
 </resources>

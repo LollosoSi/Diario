@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/accent_background_dark"
     tools:context="utenti.diario.inizio">
 
 
@@ -17,9 +18,9 @@
         android:visibility="visible"
         tools:layout_editor_absoluteX="117dp"
         tools:layout_editor_absoluteY="74dp"
+        android:layout_marginTop="96dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/didascaliatextview"
@@ -35,9 +36,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/didascaliatextview"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="158dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
-        android:hint="Input name"
+        android:hint="@string/username"
+        android:drawableTint="#FFF"
+        android:drawableLeft="@drawable/ic_abstract_user_flat_2"
         android:inputType="textPersonName" />
 
     <EditText
@@ -47,8 +50,38 @@
         android:layout_alignEnd="@+id/nameinput"
         android:layout_below="@+id/nameinput"
         android:ems="10"
-        android:hint="input password"
-        android:inputType="textPassword" />
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:drawableTint="#FFF"
+        android:drawableLeft="@drawable/ic_lock1600"
+        />
+
+    <Button
+        android:id="@+id/login_bt"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/button_shape"
+        android:text="@string/login"
+        android:layout_below="@+id/classes_spinner"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/institutes_spinner"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordinput"
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dialog" />
+
+    <Spinner
+        android:id="@+id/classes_spinner"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/institutes_spinner"
+        android:layout_below="@+id/institutes_spinner"
+        android:spinnerMode="dialog"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

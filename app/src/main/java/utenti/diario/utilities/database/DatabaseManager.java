@@ -16,6 +16,7 @@ public class DatabaseManager {
     public DatabaseManager(){
         // Initializing
         DR = FirebaseDatabase.getInstance().getReference();
+        Container.getInstance().databaseManager = this;
     }
 
     public DatabaseReference getDatabase(){

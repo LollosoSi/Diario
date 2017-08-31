@@ -39,4 +39,9 @@
     <string name="welcome_back">Bentornato!</string>
     <string name="wrong_password">Password errata</string>
     <string name="user_not_exist">Questo utente non esiste</string>
+    <string name="alias_found">Nome simile trovato</string>
+    <string name="replace_name">Sostituisci nome</string>
+    <string name="found_similiar_name">Trovato utente con un nome simile. Non è possibile utilizzare nomi simili. Il
+        nome inserito sarà corretto.
+    </string>
 </resources>

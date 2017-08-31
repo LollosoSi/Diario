@@ -31,29 +31,56 @@
         android:text="@string/welcome2" />
 
     <EditText
-        android:id="@+id/nameinput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/didascaliatextview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="92dp"
-        android:drawableLeft="@drawable/ic_abstract_user_flat_2"
-        android:drawableTint="#FFF"
-        android:ems="10"
-        android:hint="@string/username"
-        android:inputType="textPersonName" />
+            android:id="@+id/nameinput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/didascaliatextview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="92dp"
+            android:drawableLeft="@drawable/ic_abstract_user_flat_2"
+            android:drawableTint="#FFF"
+            android:ems="10"
+            android:hint="@string/username"
+            android:maxLines="1"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/passwordinput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/nameinput"
-        android:layout_below="@+id/nameinput"
-        android:drawableLeft="@drawable/ic_lock1600"
-        android:drawableTint="#FFF"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+    <LinearLayout
+            android:id="@+id/passwordcontainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/nameinput"
+            android:layout_below="@+id/nameinput"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+        <EditText
+                android:id="@+id/passwordinput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/nameinput"
+                android:layout_below="@+id/nameinput"
+                android:drawableLeft="@drawable/ic_lock1600"
+                android:drawableTint="#FFF"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingRight="60dp"/>
+
+        <ImageButton
+                android:id="@+id/showPassword"
+                style="?android:buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-50dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:elevation="0dp"
+                android:paddingBottom="10dp"
+                android:tint="#FFFF"
+                android:src="@drawable/showpassword_icon"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/login_bt"
@@ -67,12 +94,12 @@
         android:layout_marginBottom="70dp" />
 
     <Spinner
-        android:id="@+id/institutes_spinner"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordinput"
-        android:layout_centerHorizontal="true"
-        android:spinnerMode="dialog" />
+            android:id="@+id/institutes_spinner"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/passwordcontainer"
+            android:layout_centerHorizontal="true"
+            android:spinnerMode="dialog" />
 
     <Spinner
         android:id="@+id/classes_spinner"

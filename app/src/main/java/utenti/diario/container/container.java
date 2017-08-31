@@ -1,11 +1,13 @@
 package utenti.diario.container;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 
 import utenti.diario.utilities.database.DatabaseManager;
 
 /**
- * Created by SosiForWork on 01/08/2017.
+ * Created by LollosoSi on 01/08/2017.
  */
 
 public class Container {
@@ -34,8 +36,6 @@ public class Container {
     public int maxclassusers = 0;
     public int classusers = 0;
 
-    // Globals for ban
-    public long BanExpiry = 0;
-    public String BanReason = "";
-
+    // Globals for profile pic
+    public Bitmap croppedimage = null;
 }

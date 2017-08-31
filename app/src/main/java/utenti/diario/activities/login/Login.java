@@ -7,14 +7,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
+import android.support.design.widget.Snackbar;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,7 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -34,7 +31,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
@@ -43,7 +39,6 @@ import utenti.diario.activities.home.Home;
 import utenti.diario.activities.login.ban.BannedActivity;
 import utenti.diario.container.Container;
 import utenti.diario.utilities.arraylist.ArrayListManager;
-import utenti.diario.utilities.database.DatabaseManager;
 import utenti.diario.utilities.usermanagement.LoginInterface;
 import utenti.diario.utilities.usermanagement.LoginManager;
 import utenti.diario.utilities.usermanagement.UserManager;
@@ -112,6 +107,9 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
 
             // Clear password text
             ((EditText) findViewById(R.id.passwordinput)).setText("");
+
+            // Password show button setup
+            showHidePasswordEditText();
 
             //Get institutes list
             dr.child("Institutes").child("list").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -245,7 +243,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
                                 // If value is retrieved check if class is full
                                 if (maxusers != 0) {
 
-                                    if (users <= maxusers) {
+                                    if (users < maxusers) {
                                         ((TextView) findViewById(R.id.class_capacity_txt)).setText(getString(R.string.class_capacity) + ": "
                                                 + users +
                                                 "/" +
@@ -313,6 +311,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
     // Disable password to force user to put name in first
     void setPasswordEditTextDisabledandlistener() {
         findViewById(R.id.passwordinput).setEnabled(false);
+        findViewById(R.id.showPassword).setEnabled(false);
         findViewById(R.id.passwordinput).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -351,6 +350,10 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
 
                     char lastinsert = editable.charAt(editable.length() - 1);
 
+                    if (lastinsert == '\n') {
+                        Toast.makeText(Login.this, "LEZ", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     if (!charallowed(lastinsert)) {
                         //Temporary save text for remove illegal char
                         String modify = ((EditText) findViewById(R.id.nameinput)).getText().toString();
@@ -412,15 +415,18 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
         // Enable passwordinput if name satisfies rules
         if(((EditText) findViewById(R.id.nameinput)).getText().toString().length() >= 6) {
             findViewById(R.id.passwordinput).setEnabled(true);
+            findViewById(R.id.showPassword).setEnabled(true);
             ((EditText)findViewById(R.id.passwordinput)).setHint(getString(R.string.password));
 
         }  // Check if nameinput is empty, restore initial state
         else if (((EditText) findViewById(R.id.nameinput)).getText().toString().length() == 0){
             findViewById(R.id.passwordinput).setEnabled(false);
+            findViewById(R.id.showPassword).setEnabled(false);
             ((EditText)findViewById(R.id.passwordinput)).setHint(getString(R.string.password));
 
         } else {
             findViewById(R.id.passwordinput).setEnabled(false);
+            findViewById(R.id.showPassword).setEnabled(false);
             ((EditText)findViewById(R.id.passwordinput)).setHint(getString(R.string.add_chars)+ ": " + (6-((EditText) findViewById(R.id.nameinput)).getText().toString().length()));
         }
     }
@@ -472,7 +478,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
     // If login button contains "Login" this means is recognized as registered user, so no need to check
     boolean rule4(){
         if (!Objects.equals(((Button) findViewById(R.id.login_bt)).getText().toString(), getString(R.string.login))) {
-            if (global.classusers <= global.maxclassusers) {
+            if (global.classusers < global.maxclassusers) {
                 return true;
             } else {
                 GenericAdvice(getString(R.string.class_full));
@@ -491,12 +497,12 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
         switch (reason) {
             case UserManager.LOGIN_SUCCEEDED:
                 GenericAdvice(getString(R.string.welcome_back));
-                startActivity(new Intent(this, Home.class));
+                gotoHome();
                 break;
 
             case UserManager.REGISTRATION_SUCCEDED:
                 //GenericAdvice("Welcome to your new Diary");
-                startActivity(new Intent(this, Home.class));
+                gotoHome();
                 break;
 
             case UserManager.REASON_FAIL_PASSWORD_CHECK:
@@ -578,8 +584,26 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
                 // Use other caller method for setup and more info
                 // GenericAdvice("Banned");
                 break;
+
+            case UserManager.REASON_IS_ALIAS:
+                // Use other call
+                break;
         }
 
+    }
+
+    // When alias is found
+    @Override
+    public void onAliasFound(final String alias) {
+        findViewById(R.id.login_bt).setEnabled(false);
+
+        Snackbar.make(getCurrentFocus(), getString(R.string.alias_found), Snackbar.LENGTH_INDEFINITE).setAction(getString(R.string.replace_name), new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((EditText) findViewById(R.id.nameinput)).setText(alias);
+                findViewById(R.id.login_bt).setEnabled(true);
+            }
+        }).show();
     }
 
     // Shows a toast or snackbar based on availability
@@ -598,6 +622,32 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
         });
     }
 
+    boolean showingpassword = false;
+
+    void showHidePasswordEditText() {
+
+        findViewById(R.id.showPassword).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (!showingpassword) {
+                    ((ImageButton) findViewById(R.id.showPassword)).setImageDrawable(getDrawable(R.drawable.hide_password_icon));
+                    ((EditText) findViewById(R.id.passwordinput)).setInputType(InputType.TYPE_CLASS_TEXT |
+                            InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                } else {
+                    ((ImageButton) findViewById(R.id.showPassword)).setImageDrawable(getDrawable(R.drawable.showpassword_icon));
+                    ((EditText) findViewById(R.id.passwordinput)).setInputType(InputType.TYPE_CLASS_TEXT |
+                            InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+                ((EditText) findViewById(R.id.passwordinput)).setSelection(((EditText) findViewById(R.id.passwordinput)).getText().length());
+                showingpassword = !showingpassword;
+
+            }
+        });
+
+    }
+
     // Called when UserManager recognises a banned device, with more informations than onLoginResult
     @Override
     public void onBannedResult(long expiry, String Reason) {
@@ -609,9 +659,26 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
     }
 
     @Override
-    public void userExist(boolean exist) {
+    public void userExist(boolean exist, final String Alias) {
+
         if (exist){
-            ((Button) findViewById(R.id.login_bt)).setText(getString(R.string.login));
+            if (Alias != null) {
+                Toast.makeText(this, "lezzo", Toast.LENGTH_SHORT).show();
+                AlertDialog ad = new AlertDialog.Builder(this)
+                        .setCancelable(false)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle(android.R.string.dialog_alert_title)
+                        .setMessage(getString(R.string.found_similiar_name))
+                        .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ((EditText) findViewById(R.id.nameinput)).setText(Alias);
+                            }
+                        }).show();
+
+            } else {
+                ((Button) findViewById(R.id.login_bt)).setText(getString(R.string.login));
+            }
         } else {
             ((Button) findViewById(R.id.login_bt)).setText(getString(R.string.register));
         }
@@ -621,6 +688,12 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
     @Override
     public void isBanned(boolean isbanned) {
 
+    }
+
+    // Go to home screen
+    void gotoHome() {
+        startActivity(new Intent(this, Home.class));
+        finish();
     }
 
     @Override

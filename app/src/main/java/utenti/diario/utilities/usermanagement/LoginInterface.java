@@ -6,5 +6,7 @@ package utenti.diario.utilities.usermanagement;
 
 public interface LoginInterface {
     void onLoginResult(boolean success, int reason);
+
+    void onAliasFound(String alias);
     void onBannedResult(long expiry, String Reason);
 }

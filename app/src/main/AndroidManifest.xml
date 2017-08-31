@@ -6,12 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/diario"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/MaterialLight">
+            android:allowBackup="true"
+            android:icon="@mipmap/diario"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".inizio"
             android:theme="@style/MaterialBlackNoActionBar">
@@ -24,9 +24,22 @@
         <activity
             android:name=".activities.login.Login"
             android:theme="@style/MaterialBlackNoActionBar" />
-        <activity android:name=".activities.home.Home" />
-        <activity android:name=".activities.login.ban.BannedActivity"
-            android:theme="@style/MaterialBlack"/>
+        <activity
+                android:name=".activities.home.Home"
+                android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+                android:name=".activities.login.ban.BannedActivity"
+                android:theme="@style/MaterialBlack"/>
+
+        <provider
+                android:name=".utilities.files.fileprovider"
+                android:authorities="${applicationId}.my.package.name.provider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/provider_paths"/>
+        </provider>
     </application>
 
 </manifest>

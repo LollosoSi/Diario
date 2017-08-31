@@ -61,12 +61,13 @@ public class LoginManager {
     public void SaveCredentials(Context ctx, String name, String password, String institute, String Class){
         if(ctx==null) {ctx = getGlobalContext();}
 
-        ctx.getSharedPreferences("credentials",Context.MODE_PRIVATE).edit().putString("name",name).apply();
+        ctx.getSharedPreferences("credentials",Context.MODE_PRIVATE).edit().putString("name",name).commit();
         if(password!=null) {
-            ctx.getSharedPreferences("credentials", Context.MODE_PRIVATE).edit().putString("password",password).apply();
+            ctx.getSharedPreferences("credentials", Context.MODE_PRIVATE).edit().putString("password",password).commit();
         }
-        ctx.getSharedPreferences("credentials",Context.MODE_PRIVATE).edit().putString("class", Class).apply();
-        ctx.getSharedPreferences("credentials",Context.MODE_PRIVATE).edit().putString("institute", institute).apply();
+        ctx.getSharedPreferences("credentials",Context.MODE_PRIVATE).edit().putString("class", Class).commit();
+        ctx.getSharedPreferences("credentials",Context.MODE_PRIVATE).edit().putString("institute", institute).commit();
+        ctx.getSharedPreferences("credentials",Context.MODE_PRIVATE).edit().putBoolean("autologin",true).commit();
     }
 
     public void StoreContext(Context ctx){

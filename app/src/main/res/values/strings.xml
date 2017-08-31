@@ -18,4 +18,24 @@
     <string name="register">Register</string>
     <string name="choose_your_institute">Choose your Institute</string>
     <string name="choose_your_class">Choose your class</string>
+    <string name="class_capacity">Class capacity</string>
+    <string name="class_full">This class is full</string>
+    <string name="add_chars">Add chars</string>
+    <string name="new_user_alert">This user doesn\'t exist, would you like to register it?</string>
+    <string name="EULA">L\'applicazione è distribuita in lingua italiana, gratuitamente, senza pubblicità e pagamenti in-app, dietro specifiche condizioni d\'utilizzo.\n\nProcedendo, l\'utente conferma di aver letto ed accettato le seguenti condizioni:\n\nLo sviluppatore non è responsabile in caso di:\n -Danneggiamento del dispositivo dovuto a malfunzionamenti dell\'app\\n -Furto di password e/o dati personali che devono essere tenuti al di fuori di questa applicazione\n -Errori gravi\n -Diffusione da parte dell\'utente dei propri dati nella chat della sua sezione o di altri istituti\n\nDIVIETI\\nSeveramente vietato è:\n -Account Sharing\n -Diffusione di qualsiasi dato appartenente a se stessi e/o di altre persone in qualsiasi forma\n -Registrarsi in altre sezioni al di fuori della propria\n -Eliminare dati che potrebbero essere ancora utili\n -Modificare, Decompilare e Ridistribuire una versione modificata di questa applicazione spacciandola per ufficiale. Lo Sviluppatore non è responsabile dai possibili danni derivati dall\'uso di queste versioni non ufficiali\n\nTRATTAMENTO DEI DATI\n L\'app raccoglie dei dati sull\'utente che sono utilizzati solo a scopo statistico e diagnostico in casi come:\n -L\'aggiornamento dell\'applicazione\n -Ultima data Online\n -Errori raccolti di varia natura\nLo sviluppatore può contattare qualsiasi utente in qualsiasi momento se esso abbia richiesto assistenza o abbia contribuito alla risoluzione di un errore. Nessun dato citato in precedenza permette allo sviluppatore di contattare l\'utente direttamente.\n\n\n L\'infrazione più o meno grave di qualsiasi direttiva può essere punita con l\'allontanamento temporaneo (da 1 ora a 1 anno scolastico) o con l\'allontanamento permanente che comporterebbe l\'eliminazione del proprio account di riferimento ma non i dati caricati e diagnostici.\n\nSe si decide di non accettare queste condizioni, rimuovere immediatamente l\'applicazione.\n\n\nUtenti 01/03/17</string>
+    <string name="terms_of_use">Terms of use</string>
+    <string name="confirm">Confirm</string>
+    <string name="agree_to_terms">I agree to the terms of use</string>
+    <string name="welcome2_variant">Your homework with style</string>
+    <string name="your_about_to_register_a_new_user">You\'re about to register a new user.   In order to do that, you have to agree to the terms of use</string>
+    <string name="ban_no_reason">You\'re banned</string>
+    <string name="ban_bad_behaviour">You\'re banned for having a bad behaviour</string>
+    <string name="ban_account_sharing">You\'re banned for sharing your account</string>
+    <string name="ban_multi_account">You\'re banned for having more than 1 account in the same class</string>
+    <string name="ban_account_stealing">You\'re banned for using other\'s account</string>
+    <string name="ban_expires_in">Ban expires on</string>
+    <string name="ban_advice_text">You got banned!</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="wrong_password">Wrong password!</string>
+    <string name="user_not_exist">This user doesn\'t exist</string>
 </resources>

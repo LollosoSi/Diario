@@ -3,7 +3,7 @@
     package="utenti.diario">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MaterialLight">
-
-        <activity android:name=".inizio"
+        <activity
+            android:name=".inizio"
             android:theme="@style/MaterialBlackNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activities.login.Login"
-            android:theme="@style/MaterialBlackNoActionBar"/>
-
-        <activity android:name=".activities.home.Home"></activity>
+        <activity
+            android:name=".activities.login.Login"
+            android:theme="@style/MaterialBlackNoActionBar" />
+        <activity android:name=".activities.home.Home" />
+        <activity android:name=".activities.login.ban.BannedActivity"
+            android:theme="@style/MaterialBlack"/>
     </application>
 
 </manifest>

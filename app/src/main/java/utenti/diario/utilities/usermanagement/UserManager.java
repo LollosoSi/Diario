@@ -1,6 +1,7 @@
 package utenti.diario.utilities.usermanagement;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -46,7 +47,8 @@ public class UserManager implements UserManagerInterface {
 
             /*Store hashed password*/  Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).child("password").setValue(new Encryption().Hash256(password));
             /*Store hashed Imei*/  Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).child("id").setValue(new Encryption().Hash256(imei));
-            /*Set permissions*/    Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).child("permissions").setValue(new ArrayList<String>(Arrays.asList("user_normal","user_read")));
+            /*Set permissions*/
+        Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).child("permissions").setValue(new ArrayList<String>(Arrays.asList("user.read")));
             /*Set using version */  Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).child("version").setValue(BuildConfig.VERSION_CODE);
             /*Set Last login time*/  Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).child("lastLogin").setValue(CurrentTime);
 
@@ -70,6 +72,7 @@ public class UserManager implements UserManagerInterface {
         });
 
     }
+
     public LoginInterface latestli;
     String institute;
     String Class;
@@ -97,6 +100,7 @@ public class UserManager implements UserManagerInterface {
         this.Class=Class;
 
         // 2 Methods chain
+
         isBanned(IMEI,Container.getInstance().databaseManager.getDatabase(),ctx,this);
 
 
@@ -105,18 +109,22 @@ public class UserManager implements UserManagerInterface {
     // Check if user exist. USES UMI
     public void userExist(String institute, String Class, final String name, final UserManagerInterface umi) {
 
+
        if(institute != null && Class != null && name != null ) {
+
            Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("userslist").addListenerForSingleValueEvent(new ValueEventListener() {
                @Override
                public void onDataChange(DataSnapshot dataSnapshot) {
 
                    if (dataSnapshot.exists()) {
 
-                       ArrayList<String> users = new ArrayList<String>(Arrays.asList(dataSnapshot.getValue().toString().replace(" ", "").replace("[", "").replace("]", "").split(",")));
+                       ArrayList<String> users = new ArrayListManager().ConvertedArrayFromFirebase(dataSnapshot.getValue().toString());
                        boolean exist = false;
                        boolean hasAlias = false;
                        String Alias = "";
+
                        for (int i = 0; i < users.size(); i++) {
+
                            if (users.get(i).equalsIgnoreCase(name)) {
                                exist = true;
                                if (!Objects.equals(users.get(i), name)) {
@@ -125,16 +133,20 @@ public class UserManager implements UserManagerInterface {
                                }
                            }
                        }
+
                        if (exist) {
+
                            if (hasAlias) {
                                umi.userExist(true, Alias);
                            } else {
-                               umi.userExist(true, null);
+                               umi.userExist(true, "");
                            }
+                       } else {
+                           umi.userExist(false, "");
                        }
 
                    } else {
-                       umi.userExist(false, null);
+                       umi.userExist(false, "");
                    }
 
 
@@ -167,16 +179,16 @@ public class UserManager implements UserManagerInterface {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                ArrayList<String> bannedList;
 
-                    Container.getInstance().temparraylist = new ArrayList<String>(Arrays.asList(dataSnapshot.getValue().toString().replace(" ","").replace("[","").replace("]","").split(",")));
-
+                if (dataSnapshot.exists()) {
+                    bannedList = new ArrayList<String>(Arrays.asList(dataSnapshot.getValue().toString().replace(" ", "").replace("[", "").replace("]", "").split(",")));
                 }else{
-                    Container.getInstance().temparraylist = new ArrayList<String>(Arrays.asList("dummy","0123","BanReason"));
+                    bannedList = new ArrayList<String>(Arrays.asList("dummy", "0123", "BanReason"));
                 }
 
                 String EncryptedImei = new Encryption().Hash256(Imei);
-                ArrayList<String> bannedList = Container.getInstance().temparraylist;
+
                 Boolean banned = false;
 
                 for (int i = 0; i < bannedList.size(); i++){
@@ -198,6 +210,7 @@ public class UserManager implements UserManagerInterface {
                     }
                 }
 
+
                 umi.isBanned(banned);
             }
 
@@ -214,29 +227,36 @@ public class UserManager implements UserManagerInterface {
 
     @Override
     public void userExist(boolean exist, String alias) {
+
         // do not proceed if alias is found
-        if (alias != null) {
+        if (!Objects.equals(alias, "")) {
             latestli.onAliasFound(alias);
             latestli.onLoginResult(false, REASON_IS_ALIAS);
 
         } else {
-        if (!exist){
-            if(!RegisterIfNotExist){latestli.onLoginResult(false, REASON_USER_NOT_EXIST);} else{
+
+            if (!exist){
+
+                if (!RegisterIfNotExist) {
+
+                    latestli.onLoginResult(false, REASON_USER_NOT_EXIST);
+                } else {
             // Check maximum users
-            Container.getInstance().databaseManager.getDatabase().child("Institutes").child(Container.getInstance().GlobalInstitute).child(Container.getInstance().GlobalClass).child("utenza").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    Container.getInstance().databaseManager.getDatabase().child("Institutes").child(Container.getInstance().GlobalInstitute).child(Container.getInstance().GlobalClass).child("utenza").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    int maxusers = 0;
-                    int users = 0;
+                    int max = 0;
+                    int actualusers = 0;
 
                     if(dataSnapshot.exists()){
                         ArrayList<String> usersnum = new ArrayListManager().ConvertedArrayFromFirebase(dataSnapshot.getValue().toString());
-                        users = Integer.parseInt(usersnum.get(0));
-                        maxusers = Integer.parseInt(usersnum.get(1));
+                        actualusers = Integer.parseInt(usersnum.get(0));
+                        max = Integer.parseInt(usersnum.get(1));
                     }
 
-                    if (users < maxusers) {
-                        Container.getInstance().databaseManager.getDatabase().child("Institutes").child(Container.getInstance().GlobalInstitute).child(Container.getInstance().GlobalClass).child("utenza").setValue(new ArrayList<>(Arrays.asList((users+1),maxusers)));
+                    if (actualusers < max) {
+                        Container.getInstance().databaseManager.getDatabase().child("Institutes").child(Container.getInstance().GlobalInstitute).child(Container.getInstance().GlobalClass).child("utenza").setValue(new ArrayList<>(Arrays.asList((actualusers + 1), max)));
 
                         Registration(name,password,Class,institute,imei);
                         if (StoreInfo){
@@ -261,6 +281,7 @@ public class UserManager implements UserManagerInterface {
             Container.getInstance().databaseManager.getDatabase().child("Institutes").child(institute).child(Class).child("users").child(name).child("password").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+
                     if(dataSnapshot.exists()){
 
                         if(verifyPassword(dataSnapshot.getValue().toString(),password)){
@@ -311,15 +332,18 @@ public class UserManager implements UserManagerInterface {
     // First step to login
     @Override
     public void isBanned(boolean isbanned) {
+
         if (isbanned){
             // Banned! Notify via LI to update UI
             latestli.onLoginResult(false,REASON_BANNED);
             latestli.onBannedResult(BanExpiry,Banreason);
         }else{
+
             // Not banned, proceed
             userExist(UserManager.this.institute,UserManager.this.Class,UserManager.this.name,UserManager.this);
         }
     }
+
 
     @Override
     public Context getContext() {

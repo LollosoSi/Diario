@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/container_materia_ora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/materiaView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.98"
+            android:paddingLeft="30dp"
+            android:text="Materia"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textview_ora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:text="1° Ora" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_compiti_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/compitiView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.06"
+            android:paddingLeft="20dp"
+            android:text="Pagina 42 numero 50- 51 -52 -53\n" />
+
+        <CheckBox
+            android:id="@+id/checkbox_made_it"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="20dp"
+            android:checked="false"
+            android:hapticFeedbackEnabled="true"
+            android:soundEffectsEnabled="true"
+            android:text="@string/fatto"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textIsSelectable="false"
+            android:tooltipText="Remember you made this"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</LinearLayout>

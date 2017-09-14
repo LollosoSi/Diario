@@ -43,10 +43,32 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="alias_found">User with similiar name found</string>
     <string name="replace_name">Replace name</string>
-    <string name="similiar_name_advice">Found user with the same name, is not allowed to use similar names \\nText\'ll
-        be replaced
-    </string>
+    <string name="similiar_name_advice">Found user with the same name, is not allowed to use similar names. Text\'ll be replaced.</string>
     <string name="found_similiar_name">Found user with the same name, is not allowed to use similar names. Input
         text\'ll be replaced
     </string>
+    <string name="settings">Settings</string>
+    <string name="logout">Log Out</string>
+    <string name="admin_area">Admin Area</string>
+    <string name="write">Write</string>
+    <string name="tools">Tools</string>
+    <string name="read">Read</string>
+    <string name="actions">Actions</string>
+    <string name="user_management">User Management</string>
+    <string name="institutes_management">Institutes Management</string>
+    <string name="fatto">I made it</string>
+    <string name="hour">Hour</string>
+    <string name="day_lunedi">Monday</string>
+    <string name="day_martedi">Tuesday</string>
+    <string name="day_mercoledi">Wednesday</string>
+    <string name="day_giovedi">Thursday</string>
+    <string name="day_venerdi">Friday</string>
+    <string name="day_sabato">Saturday</string>
+    <string name="day_domenica">Sunday</string>
+    <string name="watching">Watching</string>
+    <string name="nothing_for_today">Nothing found for this day</string>
+    <string name="select_materia">Choose subject</string>
+    <string name="avviso">Advice</string>
+    <string name="hint_write_homework_here">Write homework here</string>
+    <string name="modified_by">Modified by</string>
 </resources>

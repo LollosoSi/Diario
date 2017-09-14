@@ -44,4 +44,29 @@
     <string name="found_similiar_name">Trovato utente con un nome simile. Non è possibile utilizzare nomi simili. Il
         nome inserito sarà corretto.
     </string>
+    <string name="similiar_name_advice">Trovato utente con nome simile. Non è permesso utilizzare nomi simili, il nome inserito sarà corretto.</string>
+    <string name="settings">Impostazioni</string>
+    <string name="logout">Esci</string>
+    <string name="admin_area">Amministrazione</string>
+    <string name="write">Scrivi</string>
+    <string name="tools">Strumenti</string>
+    <string name="read">Leggi</string>
+    <string name="actions">Azioni</string>
+    <string name="user_management">Gestione Utenti</string>
+    <string name="institutes_management">Gestione Istituti</string>
+    <string name="fatto">Fatto</string>
+    <string name="hour">Ora</string>
+    <string name="day_domenica">Domenica</string>
+    <string name="day_lunedi">Lunedì</string>
+    <string name="day_martedi">Martedì</string>
+    <string name="day_mercoledi">Mercoledì</string>
+    <string name="day_sabato">Sabato</string>
+    <string name="day_venerdi">Venerdì</string>
+    <string name="day_giovedi">Giovedì</string>
+    <string name="watching">Stai vedendo</string>
+    <string name="nothing_for_today">Questo giorno è libero</string>
+    <string name="select_materia">Scegli materia</string>
+    <string name="avviso">Avviso</string>
+    <string name="hint_write_homework_here">Scrivi i compiti qui</string>
+    <string name="modified_by">Modificato da</string>
 </resources>

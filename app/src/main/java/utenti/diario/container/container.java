@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import java.util.ArrayList;
 
+import utenti.diario.regole.permissions.PermissionInternalFragment;
 import utenti.diario.utilities.database.DatabaseManager;
 
 /**
@@ -36,6 +37,15 @@ public class Container {
     public int maxclassusers = 0;
     public int classusers = 0;
 
-    // Globals for profile pic
-    public Bitmap croppedimage = null;
+    // Complete permissions list
+    public ArrayList<String> permissionslist = null;
+    public ArrayList<PermissionInternalFragment> internalFragments = new ArrayList<>();
+    public ArrayList<String> parents = new ArrayList<>();
+    public ArrayList<PermissionInternalFragment> userFragments = new ArrayList<>();
+
+    // Orario
+    public ArrayList<String> orario = null;
+
+    // Days in list
+    public ArrayList<String> Days = null;
 }

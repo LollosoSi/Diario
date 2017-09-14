@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Tools">
+    <item android:title="@string/actions">
         <menu>
-            <item android:id="@+id/read" android:title="Leggi" android:icon="@drawable/ic_security_white_24dp"/>
+            <item
+                android:id="@+id/action_read"
+                android:title="@string/read"
+                android:iconTint="#FFF"
+                android:icon="@drawable/ic_read"
+                android:visible="false" />
+            <item
+                android:id="@+id/action_write"
+                android:title="@string/write"
+                android:icon="@drawable/ic_writing_pen"
+                android:iconTint="#FFF"
+                android:visible="false" />
         </menu>
     </item>
 
-    <item android:id="@+id/settings" android:title="settings" android:icon="@drawable/ic_settings_white"/>
+    <item android:title="@string/tools">
+        <menu>
+            <item
+                android:id="@+id/action_admin_area"
+                android:title="@string/admin_area"
+                android:icon="@drawable/ic_admin_with_cogwheels"
+                android:iconTint="#FFF"
+                android:visible="false" />
+        </menu>
+    </item>
 
-    <item android:id="@+id/logout" android:title="logout" android:icon="@drawable/ic_exit_to_app_white"/>
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/settings"
+        android:iconTint="#FFF"
+        android:icon="@drawable/ic_settings_white" />
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/logout"
+        android:iconTint="#FFF"
+        android:icon="@drawable/ic_exit_to_app_white" />
 </menu>

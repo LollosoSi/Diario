@@ -88,6 +88,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_shape"
         android:enabled="false"
+        android:soundEffectsEnabled="true"
+        android:hapticFeedbackEnabled="true"
         android:text="@string/login"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

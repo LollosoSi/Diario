@@ -23,4 +23,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="Appcompat_noactionbar" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="appcompat_actionbar" parent="Theme.AppCompat">
+
+    </style>
 </resources>

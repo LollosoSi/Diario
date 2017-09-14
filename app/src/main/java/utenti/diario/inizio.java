@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.util.Random;
 
 import utenti.diario.activities.login.Login;
+import utenti.diario.regole.permissions.Permissions;
 import utenti.diario.utilities.database.DatabaseManager;
 import utenti.diario.utilities.exceptions.GlobalContextNotDeclared;
 import utenti.diario.utilities.internet.InternetCheck;
@@ -49,6 +50,13 @@ public class inizio extends Activity implements InternetCheck {
 
         StartConnectionCheck(); // Check if internet is available (Result given by interface)
 
+        // Register all permissions
+        Permissions p = new Permissions();
+        p.RegisterPermission("user", "read");
+        p.RegisterPermission("user", "write");
+        p.RegisterPermission("admin", "access_area");
+        p.RegisterPermission("admin", "user_management");
+        p.RegisterPermission("admin", "institutes_management");
 
     }
 

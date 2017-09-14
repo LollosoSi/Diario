@@ -13,6 +13,7 @@ import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,10 +54,6 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
     // Initialize global database reference
     DatabaseReference dr = global.databaseManager.getDatabase();
     LoginManager lm;
-
-    // Boolean for name and password checking (used for AND port enabling login button)
-    boolean nameinput_sufficient = false;
-    boolean passwordinput_sufficient = false;
 
     // Boolean for prevent multiple setup calls
     boolean OnceSetup = false;
@@ -286,8 +283,12 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
             findViewById(R.id.login_bt).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // Haptic feedback
+                    findViewById(R.id.login_bt).performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+
                     // Check if everything is ok (automatic notification to user)
                     if (rule1() && rule2() && rule3() && rule4()) {
+                        callprogressdialoglogin();
 
                         // Login
                         new UserManager().Login(
@@ -302,6 +303,8 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
                                 false);
 
 
+                    } else {
+                        // GenericAdvice("Rule not respect");
                     }
                 }
             });
@@ -501,7 +504,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
                 break;
 
             case UserManager.REGISTRATION_SUCCEDED:
-                //GenericAdvice("Welcome to your new Diary");
+                GenericAdvice("Welcome to your new Diary");
                 gotoHome();
                 break;
 
@@ -520,6 +523,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
                 if(OnceSetup) {
                     // Registration dialog
                     AlertDialog ad = new AlertDialog.Builder(this)
+                            .setCancelable(false)
                             .setIcon(R.drawable.ic_abstract_user_flat_2)
                             .setTitle(android.R.string.dialog_alert_title)
                             .setMessage(R.string.new_user_alert)
@@ -549,6 +553,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
                                         @Override
                                         public void onClick(View view) {
                                             d.dismiss();
+                                            callprogressdialoglogin();
                                             // Login and register then
                                             new UserManager().Login(
                                                     Login.this,
@@ -577,6 +582,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
                 }else{
                     GenericAdvice(getString(R.string.user_not_exist));
                 }
+
                 secondarySetup();
                 break;
 
@@ -662,8 +668,7 @@ public class Login extends Activity implements LoginInterface, UserManagerInterf
     public void userExist(boolean exist, final String Alias) {
 
         if (exist){
-            if (Alias != null) {
-                Toast.makeText(this, "lezzo", Toast.LENGTH_SHORT).show();
+            if (!Objects.equals(Alias, "")) {
                 AlertDialog ad = new AlertDialog.Builder(this)
                         .setCancelable(false)
                         .setIcon(android.R.drawable.ic_dialog_alert)
